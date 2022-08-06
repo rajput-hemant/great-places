@@ -15,32 +15,41 @@ class PlacesListScreen extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () => Navigator.pushNamed(context, AddPlaceScreen.routeName),
       ),
-      body: Consumer<GreatPlaces>(
-        builder: (context, greatPlaces, child) => greatPlaces.items.isEmpty
-            ? child!
-            : ListView.builder(
-                itemCount: greatPlaces.items.length,
-                itemBuilder: (context, i) => ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: FileImage(greatPlaces.items[i].image),
+      body: FutureBuilder(
+        future: Provider.of<GreatPlaces>(context, listen: false)
+            .fetchAndSetPlaces(),
+        builder: (context, snapshot) =>
+            snapshot.connectionState == ConnectionState.waiting
+                ? const Center(child: CircularProgressIndicator())
+                : Consumer<GreatPlaces>(
+                    builder: (context, greatPlaces, child) =>
+                        greatPlaces.items.isEmpty
+                            ? child!
+                            : ListView.builder(
+                                itemCount: greatPlaces.items.length,
+                                itemBuilder: (context, i) => ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage:
+                                        FileImage(greatPlaces.items[i].image),
+                                  ),
+                                  title: Text(greatPlaces.items[i].title),
+                                  onTap: () {
+                                    // GO TO details page
+                                  },
+                                ),
+                              ),
+                    child: const Center(
+                      child: Text(
+                        'Got no places yet,\n'
+                        'Start adding some!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
-                  title: Text(greatPlaces.items[i].title),
-                  onTap: () {
-                    // GO TO details page
-                  },
-                ),
-              ),
-        child: const Center(
-          child: Text(
-            'Got no places yet,\n'
-            'Start adding some!',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
       ),
     );
   }
