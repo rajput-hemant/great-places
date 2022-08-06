@@ -20,7 +20,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   void _selectImage(File image) => _pickedImage = image;
   void _savePlace() {
     if (_titleController.text.isEmpty || _pickedImage == null) return;
-    Provider.of<GreatPlaces>(context)
+    Provider.of<GreatPlaces>(context, listen: false)
         .addPlace(_titleController.text, _pickedImage!);
     Navigator.pop(context);
   }

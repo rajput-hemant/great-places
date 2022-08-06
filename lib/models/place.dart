@@ -2,8 +2,8 @@ import 'dart:io';
 
 class Place {
   final String id, title;
-  final PlaceLocation location;
   final File image;
+  final PlaceLocation? location;
 
   Place({
     required this.id,
