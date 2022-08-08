@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:great_places/screens/map_screen.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 
 import '../helpers/location_helper.dart';
@@ -16,10 +18,20 @@ class _LocationInputState extends State<LocationInput> {
   Future<void> _getCurrentUserLocation() async {
     final locData = await Location().getLocation();
     final preview = LocationHelper.generateLocationPreviewImage(
-      latitude: locData.latitude!,
-      longitude: locData.longitude!,
+      location: LatLng(locData.latitude!, locData.longitude!),
     );
     setState(() => _map = preview);
+  }
+
+  Future<void> _selectOnMap() async {
+    final selectedLocation = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MapScreen(isSelecting: true),
+      ),
+    );
+    if (selectedLocation == null) return;
+    // ...
   }
 
   @override
@@ -52,7 +64,7 @@ class _LocationInputState extends State<LocationInput> {
               label: const Text('Current Location'),
             ),
             TextButton.icon(
-              onPressed: () {},
+              onPressed: _selectOnMap,
               icon: const Icon(Icons.map),
               label: const Text('Select on Map'),
             ),

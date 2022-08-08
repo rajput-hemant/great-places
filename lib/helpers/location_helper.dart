@@ -5,13 +5,10 @@ import 'package:latlong2/latlong.dart';
 const tomTomApiKey = 'lSAKM4Cs6KCrn3mQ7BjqwsSdyA9cmJUC';
 
 class LocationHelper {
-  static Widget generateLocationPreviewImage({
-    required double latitude,
-    required double longitude,
-  }) {
-    final location = LatLng(latitude, longitude);
+  static Widget generateLocationPreviewImage(
+      {required LatLng location, MapOptions? options}) {
     final map = FlutterMap(
-      options: MapOptions(center: location),
+      options: options ?? MapOptions(center: location, zoom: 16),
       layers: [
         TileLayerOptions(
           urlTemplate: "https://api.tomtom.com/map/1/tile/basic/main/"
