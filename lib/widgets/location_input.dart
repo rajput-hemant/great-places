@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
@@ -8,7 +6,9 @@ import '../helpers/location_helper.dart';
 import '../screens/map_screen.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({Key? key}) : super(key: key);
+  final Function onSelectPlace;
+
+  const LocationInput({super.key, required this.onSelectPlace});
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -31,6 +31,10 @@ class _LocationInputState extends State<LocationInput> {
         locData.latitude!,
         locData.longitude!,
       ));
+      widget.onSelectPlace(LatLng(
+        locData.latitude!,
+        locData.longitude!,
+      ));
     } on Exception {
       return;
     }
@@ -48,7 +52,7 @@ class _LocationInputState extends State<LocationInput> {
       selectedLocation.latitude,
       selectedLocation.longitude,
     ));
-    log(selectedLocation.latitude.toString());
+    widget.onSelectPlace(selectedLocation);
   }
 
   @override

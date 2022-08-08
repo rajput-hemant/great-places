@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -31,4 +34,18 @@ class LocationHelper {
     );
     return map;
   }
+
+  static Future<String> getPlaceAddress(LatLng location) async {
+    final url =
+        'https://api.tomtom.com/search/2/reverseGeocode/${location.latitude},${location.longitude}.JSON?key=$tomTomApiKey&language=en';
+    final response = await http.get(Uri.parse(url));
+    final addresses = json.decode(response.body)['addresses'];
+    if (addresses == null || addresses.length == null) {
+      return "Can't find a suitble address for the location";
+    }
+    final String address = addresses[0]['address']['freeformAddress'];
+
+    return address;
+  }
 }
+

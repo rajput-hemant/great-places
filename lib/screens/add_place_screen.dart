@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/great_places.dart';
@@ -18,11 +19,19 @@ class AddPlaceScreen extends StatefulWidget {
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final _titleController = TextEditingController();
   File? _pickedImage;
+  LatLng? _pickedLocation;
+
   void _selectImage(File image) => _pickedImage = image;
+
+  void _selectPlace(LatLng location) =>
+      _pickedLocation = LatLng(location.latitude, location.longitude);
+
   void _savePlace() {
-    if (_titleController.text.isEmpty || _pickedImage == null) return;
+    if (_titleController.text.isEmpty ||
+        _pickedImage == null ||
+        _pickedLocation == null) return;
     Provider.of<GreatPlaces>(context, listen: false)
-        .addPlace(_titleController.text, _pickedImage!);
+        .addPlace(_titleController.text, _pickedImage!, _pickedLocation!);
     Navigator.pop(context);
   }
 
@@ -35,24 +44,25 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  TextField(
-                    decoration: const InputDecoration(labelText: 'Title'),
-                    controller: _titleController,
-                  ),
-                  const SizedBox(height: 10),
-                  ImageInput(onSelectImage: _selectImage),
-                  const SizedBox(height: 10),
-                  const LocationInput(),
-                ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    TextField(
+                      decoration: const InputDecoration(labelText: 'Title'),
+                      controller: _titleController,
+                    ),
+                    const SizedBox(height: 10),
+                    ImageInput(onSelectImage: _selectImage),
+                    const SizedBox(height: 10),
+                    LocationInput(onSelectPlace: _selectPlace),
+                  ],
+                ),
               ),
             ),
           ),
-          const Spacer(),
           ElevatedButton.icon(
             onPressed: _savePlace,
             icon: const Icon(Icons.add),
@@ -66,7 +76,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               shape:
                   const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
             ),
-          )
+          ),
         ],
       ),
     );
