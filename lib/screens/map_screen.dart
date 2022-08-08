@@ -46,6 +46,11 @@ class _MapScreenState extends State<MapScreen> {
               widget.isSelecting ? _selectLocation(point) : null,
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed:
+            _location == null ? null : () => Navigator.pop(context, _location),
+        child: const Icon(Icons.save),
+      ),
     );
   }
 }
