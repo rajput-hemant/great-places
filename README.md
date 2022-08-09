@@ -48,6 +48,18 @@
 
 ---
 
+## 📱 App UI
+
+<details><summary> Click here to expand </summary>
+
+|    _Places List Screen_    |  _Place Detail Screen_   |
+| :------------------------: | :----------------------: |
+|  ![][places-list-screen]   | ![][place-detail-screen] |
+| **_Add New Place Screen_** |     **_Map Screen_**     |
+|   ![][add-place-screen]    |     ![][map-screen]      |
+
+</details>
+
 </div>
 
 ## Directory Structure
@@ -116,6 +128,10 @@ rajput-hemant@arch:~$ flutter run
 
 <!----------------------------------{ Images }--------------------------------->
 
+[places-list-screen]: https://telegra.ph/file/6a4c9986af2d75c1dbd9c.jpg
+[add-place-screen]: https://telegra.ph/file/60bfa9671b49636d39ba2.jpg
+[place-detail-screen]: https://telegra.ph/file/773e3da2dba584ef61891.jpg
+[map-screen]: https://telegra.ph/file/af346cb3cc3d70e919d05.jpg
 [contributors]: https://contrib.rocks/image?repo=rajput-hemant/great-places&max=500
 [contributors-graph]: https://github.com/rajput-hemant/great-places/graphs/contributors
 [android]: https://telegra.ph/file/f2f70a74d2d92c3c7f688.png
