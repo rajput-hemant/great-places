@@ -6,6 +6,8 @@
 
 # Great Places
 
+### A Flutter App to save your favorite places.
+
 ## ![][android] Download APK
 
 ---
@@ -24,7 +26,7 @@
 </div>
 
 - Working withh Native Device features like Camera, and Maps
-- Using device location to enable map functionality  
+- Using device location to enable map functionality
 - Working with local databases like sqflite
 - Working with system files
 
@@ -125,10 +127,10 @@ rajput-hemant@arch:~$ flutter run
 
 <!------------------------------------{ apk }----------------------------------->
 
-[universal-release]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Calculator-v0.1.0-universal-release.apk
-[arm64]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Calculator-v0.1.0-arm64.apk
-[x64]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Calculator-v0.1.0-x64.apk
-[armabi]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Calculator-v0.1.0-armeabi.apk
+[universal-release]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Great-Places-v0.1.0-universal-release.apk
+[arm64]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Great-Places-v0.1.0-arm64.apk
+[x64]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Great-Places-v0.1.0-x64.apk
+[armabi]: https://github.com/rajput-hemant/great-places/releases/download/v0.1.0/Great-Places-v0.1.0-armeabi.apk
 
 <!--------------------------------{ source code }------------------------------->
 
