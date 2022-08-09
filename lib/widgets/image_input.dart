@@ -54,13 +54,17 @@ class _ImageInputState extends State<ImageInput> {
               : const Text(
                   'No Image Taken',
                   textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
         ),
         const SizedBox(width: 10),
         Expanded(
           child: TextButton.icon(
             icon: const Icon(Icons.camera),
-            label: const Text('Take Picture'),
+            label: const Text(
+              'Take Picture',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             onPressed: _takePicture,
           ),
         ),

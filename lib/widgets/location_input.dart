@@ -73,6 +73,7 @@ class _LocationInputState extends State<LocationInput> {
               const Text(
                 'No Location Chosen!',
                 textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
         ),
         const SizedBox(height: 10),
@@ -82,12 +83,18 @@ class _LocationInputState extends State<LocationInput> {
             TextButton.icon(
               onPressed: _getCurrentUserLocation,
               icon: const Icon(Icons.location_on),
-              label: const Text('Current Location'),
+              label: const Text(
+                'Current Location',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             TextButton.icon(
               onPressed: _selectOnMap,
               icon: const Icon(Icons.map),
-              label: const Text('Select on Map'),
+              label: const Text(
+                'Select on Map',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),

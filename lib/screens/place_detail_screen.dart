@@ -25,7 +25,7 @@ class PlaceDetailScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 30),
           Text(
             selectedPlace.location!.address!,
             textAlign: TextAlign.center,
@@ -34,9 +34,12 @@ class PlaceDetailScreen extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
-          const SizedBox(height: 10),
-          TextButton(
-            child: const Text('View On Map'),
+          const Spacer(),
+          ElevatedButton(
+            child: const Text(
+              'View On Map',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
@@ -46,6 +49,7 @@ class PlaceDetailScreen extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 30),
         ],
       ),
     );

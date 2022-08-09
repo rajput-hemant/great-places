@@ -66,7 +66,10 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
           ElevatedButton.icon(
             onPressed: _savePlace,
             icon: const Icon(Icons.add),
-            label: const Text('Add Place'),
+            label: const Text(
+              'Add Place',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
             style: ElevatedButton.styleFrom(
               elevation: 0,
               padding: const EdgeInsets.all(15),
